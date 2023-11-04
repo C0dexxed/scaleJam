@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvseqx5eoqjul"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_2akbw"]
+[ext_resource type="Texture2D" uid="uid://clam35ufe2tx8" path="res://Sprites/WalkFront1.png" id="2_eos4p"]
+[ext_resource type="Texture2D" uid="uid://db64kudmpj5i" path="res://Sprites/WalkFront2.png" id="3_1ynh3"]
+[ext_resource type="Texture2D" uid="uid://vy5rl2fg6t64" path="res://Sprites/WalkFront4.png" id="4_eball"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03oem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eos4p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eos4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ynh3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eos4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eball")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbx7y"]
+size = Vector2(127, 33)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_2akbw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_03oem")
+offset = Vector2(40, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 126.5)
+shape = SubResource("RectangleShape2D_wbx7y")
+disabled = true
