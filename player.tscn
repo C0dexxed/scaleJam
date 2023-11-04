@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c33ytllneujv0"]
+
+[ext_resource type="Texture2D" uid="uid://cbk5nbvlbe0dv" path="res://Sprites/WalkFront1.png" id="1_d0wh4"]
+[ext_resource type="Texture2D" uid="uid://c5o2g060jr1p8" path="res://Sprites/WalkFront2.png" id="2_na128"]
+[ext_resource type="Texture2D" uid="uid://4mf3qgr70fyj" path="res://Sprites/WalkFront4.png" id="3_tsydt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0q2ej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d0wh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_na128")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_d0wh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tsydt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhtxa"]
+size = Vector2(531, 156)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0q2ej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.5, 269)
+shape = SubResource("RectangleShape2D_bhtxa")
