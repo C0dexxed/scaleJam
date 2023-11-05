@@ -1,0 +1,21 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://ccxhti4hs45ru"
+path="res://.godot/imported/Fomt.webp-3b2be4821d5c0e6e8bd5aba0b3cf074e.fontdata"
+
+[deps]
+
+source_file="res://addons/Fomt.webp"
+dest_files=["res://.godot/imported/Fomt.webp-3b2be4821d5c0e6e8bd5aba0b3cf074e.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=true

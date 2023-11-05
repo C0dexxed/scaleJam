@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvseqx5eoqjul"]
+[gd_scene load_steps=10 format=3 uid="uid://cvseqx5eoqjul"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_2akbw"]
 [ext_resource type="Texture2D" uid="uid://clam35ufe2tx8" path="res://Sprites/WalkFront1.png" id="2_eos4p"]
@@ -36,6 +36,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbx7y"]
 size = Vector2(127, 33)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aactk"]
+bg_color = Color(0.54902, 0.462745, 0.407843, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.145098, 0.0901961, 0.0431373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_75hub"]
+Panel/styles/panel = SubResource("StyleBoxFlat_aactk")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uhkth"]
+font_size = 40
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_2akbw")
 
@@ -48,3 +66,33 @@ offset = Vector2(40, 0)
 position = Vector2(-14, 126.5)
 shape = SubResource("RectangleShape2D_wbx7y")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -650.0
+offset_top = -250.0
+offset_right = 650.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = SubResource("Theme_75hub")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1280.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 20
+text = "*NPC talking."
+label_settings = SubResource("LabelSettings_uhkth")
