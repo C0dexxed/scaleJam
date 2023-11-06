@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvseqx5eoqjul"]
+[gd_scene load_steps=13 format=3 uid="uid://cvseqx5eoqjul"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_2akbw"]
 [ext_resource type="Texture2D" uid="uid://clam35ufe2tx8" path="res://Sprites/WalkFront1.png" id="2_eos4p"]
 [ext_resource type="Texture2D" uid="uid://db64kudmpj5i" path="res://Sprites/WalkFront2.png" id="3_1ynh3"]
 [ext_resource type="Texture2D" uid="uid://vy5rl2fg6t64" path="res://Sprites/WalkFront4.png" id="4_eball"]
+[ext_resource type="Theme" uid="uid://cr3nb4ddwdfue" path="res://DialogueBox.tres" id="5_hfoui"]
+[ext_resource type="Texture2D" uid="uid://d1qbh4gv7k60f" path="res://icon.svg" id="5_nb123"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="6_qme4a"]
+[ext_resource type="Script" path="res://inventory.gd" id="8_lkbdq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_03oem"]
 animations = [{
@@ -36,23 +40,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbx7y"]
 size = Vector2(127, 33)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aactk"]
-bg_color = Color(0.54902, 0.462745, 0.407843, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.145098, 0.0901961, 0.0431373, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w35yq"]
+bg_color = Color(0.913725, 0.627451, 0.478431, 0.462745)
 
-[sub_resource type="Theme" id="Theme_75hub"]
-Panel/styles/panel = SubResource("StyleBoxFlat_aactk")
-
-[sub_resource type="LabelSettings" id="LabelSettings_uhkth"]
-font_size = 40
+[sub_resource type="Theme" id="Theme_f6hif"]
+ItemList/styles/panel = SubResource("StyleBoxFlat_w35yq")
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_2akbw")
@@ -71,7 +63,8 @@ disabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="DialogueBox" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -85,14 +78,50 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = SubResource("Theme_75hub")
+theme = ExtResource("5_hfoui")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
-offset_left = 20.0
+[node name="ImageBackground" type="TextureRect" parent="CanvasLayer/DialogueBox"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 215.0
+offset_bottom = 220.0
+texture = ExtResource("5_nb123")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/DialogueBox/ImageBackground"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 200.0
+texture = ExtResource("2_eos4p")
+expand_mode = 1
+
+[node name="DialogueLabel" type="RichTextLabel" parent="CanvasLayer/DialogueBox"]
+layout_mode = 0
+offset_left = 220.0
 offset_top = 20.0
 offset_right = 1280.0
 offset_bottom = 210.0
-theme_override_font_sizes/font_size = 20
-text = "*NPC talking."
-label_settings = SubResource("LabelSettings_uhkth")
+theme = ExtResource("5_hfoui")
+theme_override_font_sizes/normal_font_size = 40
+text = "*TALKING"
+script = ExtResource("6_qme4a")
+
+[node name="inventory" type="ItemList" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -250.0
+offset_right = 99.0
+offset_bottom = 250.0
+grow_vertical = 2
+theme = SubResource("Theme_f6hif")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+item_count = 1
+same_column_width = true
+fixed_icon_size = Vector2i(70, 70)
+item_0/text = "##"
+item_0/icon = ExtResource("5_nb123")
+script = ExtResource("8_lkbdq")

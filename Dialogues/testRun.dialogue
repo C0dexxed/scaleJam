@@ -1,0 +1,13 @@
+# https://www.youtube.com/watch?v=DL79aS-dT7E
+#[wait=FLOAT] Wait FLOAT seconds before continuing
+# [speed=FLOAT] Multiply speed by FLOAT (if FLOAT is less than one, it's slower)
+# -CHOICE Use hyphens at the beginning of a line to make it a choice/option, and type under(indented) that choice to continut
+# To do conditions, make a global and pull variables from there
+# To modify global variables use: do METHOD or set MODIFIED_VALUE Do is for running methods, set is for modofying values
+# {{VARIABLE}} in dialogue will display that variable in the text or names
+# ~ TITLE sets a title name. Can jump to them using =>TITLENAME
+~ this_is_a_node_title
+
+NPC: [[Who're you?| Whaddaya want |Why are you talking to me?]] [wait = 4] Actually, [wait=0.5]nevermind.
+
+=> END
